@@ -25,7 +25,11 @@ public class Exercises {
         /* to do: test data */
         System.out.println(canDistributeEvenly(10, 5));
         System.out.println(canDistributeEvenly(10, 3));
+        System.out.println(canDistributeEvenly(20, 10));
+        System.out.println(canDistributeEvenly(30, 20));
 
         System.out.println(calculatePrice(173));
+        System.out.println(calculatePrice(256));
+        System.out.println(calculatePrice(50));
     }
 }
