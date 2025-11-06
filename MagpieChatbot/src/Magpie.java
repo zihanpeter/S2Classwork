@@ -107,10 +107,12 @@ public class Magpie
     {
         if (statement.indexOf("food") != -1)
         {
+            if (pattern == "few") return "Let's eat something.";
             return "Let's eat something.\nFor example, let's eat some pizza.";
         }
         if (statement.indexOf("sport") != -1)
         {
+            if (pattern == "few") return "I like doing sports.";
             return "I know a lot of sports.\nI like playing basketball the most.";
         }
         if (statement.indexOf("date") != -1)
@@ -197,12 +199,17 @@ public class Magpie
                 System.out.println("Continue guessing: ");
                 input = scanner.nextInt();
             }
-            return "Well done! The number is " + ans;
+            return "Well done! The number is " + ans + "\nLet's continue talking.";
         }
         if (statement.indexOf("Give me more answer") != -1)
         {
             pattern = "more";
             return "Sure, I will begin to produce more responses.";
+        }
+        if (statement.indexOf("Give me fewer answer") != -1)
+        {
+            pattern = "few";
+            return "Ok, I will produce shorter answers.";
         }
         return null;
     }
