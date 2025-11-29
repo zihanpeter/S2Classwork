@@ -30,16 +30,21 @@ public class Delivery {
         this.address = address;
         this.rider = rider;
         this.price = price;
+        this.delivered = false;
     }
 
     public Delivery() {
+        this.address = "Unknown";
         this.rider = "Unknown";
+        this.delivered = false;
+        this.price = 0.0;
     }
 
     public void showDetails() {
         System.out.println("Address: " + address);
         System.out.println("Rider: " + rider);
         System.out.println("Price: " + price);
+        System.out.println("Delivered: " + delivered);
     }
 
     public static void main(String[] args) {
