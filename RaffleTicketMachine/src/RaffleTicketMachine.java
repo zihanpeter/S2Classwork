@@ -26,6 +26,32 @@ public class RaffleTicketMachine {
         return min;
     }
 
+    public int longestIncreasingStreak() {
+        int ans = 0;
+        int temp = 0;
+        for (int i = 1; i < tickets.length; i++) {
+            if (tickets[i] > tickets[i - 1]) {
+                temp++;
+                if (temp > ans) ans = temp;
+            }
+            else {
+                temp = 0;
+            }
+        }
+        return ans;
+    }
+
+    public boolean containsDuplicates() {
+        for (int i = 0; i < tickets.length; i++) {
+            for (int j = i + 1; j < tickets.length; j++) {
+                if (tickets[i] == tickets[j]) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     public int highestTicket() {
         int max = Integer.MIN_VALUE;
         for (int ticket : tickets) {
@@ -73,5 +99,11 @@ public class RaffleTicketMachine {
 
         System.out.println("Machine 1 all even: " + machine1.allEven());
         System.out.println("Machine 2 all even: " + machine2.allEven());
+
+        System.out.println("Machine 1's longest increasing streak: " + machine1.longestIncreasingStreak());
+        System.out.println("Machine 2's longest increasing streak: " + machine2.longestIncreasingStreak());
+
+        System.out.println("Machine 1 contains duplicates: " + machine1.containsDuplicates());
+        System.out.println("Machine 2 contains duplicates: " + machine2.containsDuplicates());
     }
 }
