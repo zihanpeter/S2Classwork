@@ -39,7 +39,7 @@ public class TriviaGame {
 
         System.out.println();
 
-        Solutions.TriviaGame game2 = new Solutions.TriviaGame(7);
+        TriviaGame game2 = new TriviaGame(7);
         System.out.println(game2.getLeastDifficult());
         System.out.println(game2.getMostDifficult());
         System.out.println(game2.getRating());
@@ -47,7 +47,7 @@ public class TriviaGame {
 
         System.out.println();
 
-        Solutions.TriviaGame game3 = new Solutions.TriviaGame(2);
+        TriviaGame game3 = new TriviaGame(2);
         System.out.println(game3.isDifficultyIncreasing());
     }
 }
