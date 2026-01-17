@@ -80,6 +80,19 @@ public class RaffleTicketMachine {
         return true;
     }
 
+    public void sort() {
+        for (int i = 1; i < tickets.length; i++) {
+            int insertValue = tickets[i];
+            int insertIndex = i - 1;
+
+            while (insertIndex >= 0 && tickets[insertIndex] > insertValue) {
+                tickets[insertIndex + 1] = tickets[insertIndex];
+                insertIndex--;
+            }
+            tickets[insertIndex + 1] = insertValue;
+        }
+    }
+
     public static void main(String[] args) {
         RaffleTicketMachine machine1 = new RaffleTicketMachine(5);
         RaffleTicketMachine machine2 = new RaffleTicketMachine(10);
@@ -105,5 +118,13 @@ public class RaffleTicketMachine {
 
         System.out.println("Machine 1 contains duplicates: " + machine1.containsDuplicates());
         System.out.println("Machine 2 contains duplicates: " + machine2.containsDuplicates());
+
+        machine1.sort();
+        machine2.sort();
+
+        System.out.println("Machine 1 tickets after sorting: ");
+        machine1.displayTickets();
+        System.out.println("Machine 2 tickets after sorting: ");
+        machine2.displayTickets();
     }
 }
