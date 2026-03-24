@@ -52,7 +52,7 @@ public class GridPath {
      */
     public int sumPath(int row, int col) {
         int res = grid[row][col];
-        while (row != grid.length - 1 && col != grid[0].length - 1) {
+        while (row != grid.length - 1 || col != grid[0].length - 1) {
             Location nextLocation = getNextLoc(row, col);
             row = nextLocation.getRow();
             col = nextLocation.getCol();
