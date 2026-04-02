@@ -56,6 +56,49 @@ public class Analytics {
         }
     }
 
+    /* outputs all data for all players at sequential indexes starting from 0
+    call the Player class toString method implicitly */
+    public void showAll() {
+        for (Player player : players) {
+            System.out.println(player.toString());
+        }
+    }
+
+    /* use SELECTION SORT
+    sorts the data in players by rating – descending order
+    */
+    public void sortByRating() {
+        for (int i = 0; i < players.size() - 1; i++) {
+            int maxIndex = i;
+            for (int j = i + 1; j < players.size(); j++) {
+                if (players.get(j).getRating() > players.get(maxIndex).getRating()) {
+                    maxIndex = j;
+                }
+            }
+            if (i != maxIndex) {
+                Player temp = players.get(i);
+                players.set(i, players.get(maxIndex));
+                players.set(maxIndex, temp);
+            }
+        }
+    }
+
+    /* use INSERTION SORT
+    sorts the data in players by player name – ascending order
+    */
+    public void sortByName() {
+        for (int i = 1; i < players.size(); i++) {
+            Player insertValue = players.get(i);
+            int insertIndex = i - 1;
+
+            while (insertIndex >= 0 && players.get(insertIndex).getName().compareTo(insertValue.getName()) > 0) {
+                players.set(insertIndex + 1, players.get(insertIndex));
+                insertIndex--;
+            }
+            players.set(insertIndex + 1, insertValue);
+        }
+    }
+
     public static void main(String[] args) throws FileNotFoundException {
         // add test data
         Analytics analytics = new Analytics();
