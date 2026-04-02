@@ -110,5 +110,13 @@ public class Analytics {
         System.out.println("Id of the player Charley James: " +  analytics.getIdByName("Charley James"));
         System.out.println("Id of the player Chana Ellison: " +  analytics.getIdByName("Chana Ellison"));
         System.out.println("Id of the player A (not in the list): " +  analytics.getIdByName("A"));
+
+        analytics.sortByRating();
+        System.out.println("Sorted by rating: ");
+        analytics.showAll();
+
+        analytics.sortByName();
+        System.out.println("Sorted by name: ");
+        analytics.showAll();
     }
 }
