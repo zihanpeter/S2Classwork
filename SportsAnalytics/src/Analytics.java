@@ -35,11 +35,24 @@ public class Analytics {
 
     /*
     return the ID of the player with the given name, or null if not found
+
+    Precondition: the players array list should be sorted by name
      */
     public String getIdByName(String name) {
-        for (Player player : players) {
-            if (player.getName().equals(name)) {
-                return "A" + player.getId();
+        return findIdByName(0, players.size() - 1, name);
+    }
+
+    private String findIdByName(int left, int right, String target) {
+        if (left <= right) {
+            int mid = (left + right) / 2;
+            if (players.get(mid).getName().equals(target)) {
+                return "" + players.get(mid).getId();
+            }
+            else if (players.get(mid).getName().compareTo(target) > 0) {
+                return findIdByName(left, mid - 1, target);
+            }
+            else {
+                return findIdByName(mid + 1, right, target);
             }
         }
         return null;
@@ -107,10 +120,6 @@ public class Analytics {
         System.out.println("Names of players in team Thunder Knights");
         analytics.showAllPlayers("Thunder Knights");
 
-        System.out.println("Id of the player Charley James: " +  analytics.getIdByName("Charley James"));
-        System.out.println("Id of the player Chana Ellison: " +  analytics.getIdByName("Chana Ellison"));
-        System.out.println("Id of the player A (not in the list): " +  analytics.getIdByName("A"));
-
         analytics.sortByRating();
         System.out.println("Sorted by rating: ");
         analytics.showAll();
@@ -118,5 +127,9 @@ public class Analytics {
         analytics.sortByName();
         System.out.println("Sorted by name: ");
         analytics.showAll();
+
+        System.out.println("Id of the player Charley James: " +  analytics.getIdByName("Charley James"));
+        System.out.println("Id of the player Chana Ellison: " +  analytics.getIdByName("Chana Ellison"));
+        System.out.println("Id of the player A (not in the list): " +  analytics.getIdByName("A"));
     }
 }
